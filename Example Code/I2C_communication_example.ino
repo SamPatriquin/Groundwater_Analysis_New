@@ -25,7 +25,7 @@ void loop() {
   Wire.requestFrom(20, MAX_EZO_RESPONSE_SIZE, true); // Has the EZO board at address 20 send MAX_EZO_RESPONSE_SIZE bytes. Passing true ends the I2C connection after the EZO board sends bytes to Wire.
   
   while(Wire.available()){ // Do this while the EZO board has bytes left to send
-   char c = Wire.read();
+   char c = Wire.read(); 
    Serial.print(c);
   }
   Serial.println();
