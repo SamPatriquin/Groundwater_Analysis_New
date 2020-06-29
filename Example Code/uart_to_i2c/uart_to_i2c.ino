@@ -8,6 +8,7 @@
 #define TO_EZO_RX 1 //TX on Feather
 #define TO_EZO_TX 0 //RX on Feather
 
+
 SoftwareSerial ezo_board(TO_EZO_TX, TO_EZO_RX);
 
 void setup() {
