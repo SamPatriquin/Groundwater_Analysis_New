@@ -21,7 +21,7 @@ void loop() {
   Wire.beginTransmission(20); // This function starts a transmission with an EZO board at a specified address
   Wire.write("R"); // Use Wire.write("") to send a string command to the EZO board. R requests a reading from the sensor, but this could be any command
   Wire.endTransmission(); // Stop the transmission
-  delay(100);
+  delay(1000); // A delay of at least 1 second is needed for the EZO board to take a reading
   Wire.requestFrom(20, MAX_EZO_RESPONSE_SIZE, true); // Has the EZO board at address 20 send MAX_EZO_RESPONSE_SIZE bytes. Passing true ends the I2C connection after the EZO board sends bytes to Wire.
   
   while(Wire.available()){ // Do this while the EZO board has bytes left to send
