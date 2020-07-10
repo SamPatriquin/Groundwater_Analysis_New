@@ -1,9 +1,15 @@
-void setup() {
-  // put your setup code here, to run once:
+#include <Wire.h>
+#include "BaseEzo.h"
 
+BaseEzo myEzo(20);
+
+void setup() {
+  Wire.begin();
+  Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  Serial.println(myEzo.takeReading());
+  myEzo.toSleep();
+  delay(5000);
 }
