@@ -17,10 +17,10 @@ String BaseEzo::takeReading(){
 
   delay(1000);
 
-  Wire.requestFrom(20, MAX_EZO_RESPONSE_SIZE, true);
+  Wire.requestFrom(address, MAX_EZO_RESPONSE_SIZE, true);
   
   int responseCode = Wire.read();
-  
+
   if( responseCode == 1 ) { // 1 means the response is valid
     char current;
     String response;
@@ -33,4 +33,5 @@ String BaseEzo::takeReading(){
   } else { // Anything other than one is an error
     return String("ERR");
   }
+
 }
