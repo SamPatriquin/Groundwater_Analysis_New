@@ -1,7 +1,7 @@
 #include <Wire.h>
-#include "BaseEzo.h"
+#include "TemperatureEzo.h"
 
-BaseEzo myEzo(20);
+TemperatureEzo myEzo(20);
 
 void setup() {
   Wire.begin();
