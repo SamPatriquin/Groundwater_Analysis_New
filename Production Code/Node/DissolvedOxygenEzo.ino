@@ -2,12 +2,12 @@
 
 void DissolvedOxygenEzo::sendCompensation(String temperature, String salinity) {
   String tempCommand;
-  tempCommand.reserve("T,".length() + temperature.length());
+  tempCommand.reserve(String("T,").length() + temperature.length());
   tempCommand += "T,";
   tempCommand += temperature;
 
   String salinityCommand;
-  salinityCommand.reserve("S,".length() + salinity.length());
+  salinityCommand.reserve(String("S,").length() + salinity.length());
   salinityCommand += "S,";
   salinityCommand += salinity;
   
