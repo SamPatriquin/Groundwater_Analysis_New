@@ -16,10 +16,9 @@ void loop() {
   Serial.println(temperature);
   tempEzo.toSleep();
   delay(1000);
-  condEzo.sendCompensation(temperature);
+  condEzo.sendCompensation(String("23.4"));
   delay(1000);
   Serial.println(condEzo.takeReading());
   condEzo.toSleep();
   delay(5000);
-  
 }

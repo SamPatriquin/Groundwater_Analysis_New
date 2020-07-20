@@ -2,7 +2,7 @@
 
 void ConductivityEzo::sendCompensation(String temperature){
   String command;
-  command.reserve(20); // More than enoughh
+  command.reserve(String("T,").length() + temperature.length());
   command += "T,";
   command += temperature;
   Wire.beginTransmission(address);
