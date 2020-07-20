@@ -1,6 +1,7 @@
 #include <Wire.h>
 #include "TemperatureEzo.h"
 #include "ConductivityEzo.h"
+#include "DissolvedOxygenEzo.h"
 
 TemperatureEzo tempEzo(20);
 ConductivityEzo condEzo(21);
@@ -20,4 +21,5 @@ void loop() {
   Serial.println(condEzo.takeReading());
   condEzo.toSleep();
   delay(5000);
+  
 }
