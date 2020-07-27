@@ -1,10 +1,13 @@
 #include <Wire.h>
 #include "TemperatureEzo.h"
+#include "OrpEzo.h"
 #include "ConductivityEzo.h"
 #include "DissolvedOxygenEzo.h"
 
-TemperatureEzo tempEzo(20);
-ConductivityEzo condEzo(21);
+TemperatureEzo tempEzo(11);
+OrpEzo orpEzo(12);
+ConductivityEzo condEzo(13);
+DissolvedOxygenEzo doEzo(14);
 
 void setup() {
   Wire.begin();
@@ -16,9 +19,20 @@ void loop() {
   Serial.println(temperature);
   tempEzo.toSleep();
   delay(1000);
-  condEzo.sendCompensation(String("23.4"));
+  String orp = orpEzo.takeReading();
+  Serial.println(orp);
+  orpEzo.toSleep();
   delay(1000);
-  Serial.println(condEzo.takeReading());
+  condEzo.sendCompensation(temperature);
+  delay(1000);
+  String conductivity = condEzo.takeReading();
+  Serial.println(conductivity);
   condEzo.toSleep();
+  delay(1000);
+  doEzo.sendCompensation(temperature, conductivity); // Compensation not working for DO, look into this. Also see if you can fix the string reserves, I think they're not needed.
+  delay(1000);
+  String dissolvedOxygen = doEzo.takeReading();
+  Serial.println(dissolvedOxygen);
+  doEzo.toSleep();
   delay(5000);
 }
