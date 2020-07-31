@@ -9,7 +9,7 @@ def append(data):
     headers = {'content-type':'application/json'}
     request = requests.post('https://isenseproject.org/api/v1/data_sets/append',data=json.dumps(payload),headers=headers)
     json.loads(request.text)
-    #print(request)
+    #print(request) 
     #print(request.url)
     #print(request.text)
 
@@ -50,24 +50,24 @@ def init_new_dataset():
 
 
 feather_ids_to_address_dictionaries_for_descriptions = {
-	'1337':
-	{
-		'7':'battery',
-		'20':'temperature1',
-		'21':'conductivity1',
+    '1337':
+    {
+        '7':'battery',
+        '20':'temperature1',
+        '21':'conductivity1',
                 '30':'temperature2',
                 '31':'conductivity2'
-	}
+    }
         
 }
 
 node_ids_to_position_information = {
-	'1337':
-	{
-		'depth':'5',
-		'lat':'5',
-		'long':'5'
-	}
+    '1337':
+    {
+        'depth':'5',
+        'lat':'5',
+        'long':'5'
+    }
 }
 
 dataset_base_name = 'BoatHouseTest'
@@ -105,13 +105,13 @@ def iSense_append_data(contribution_key,dataset_ID,data):
     payload = {
         'contribution_key':contribution_key,
         'id':dataset_ID,
-	'data':data
+    'data':data
     }
     headers = {'content-type':'application/json'}
     request = requests.post('https://isenseproject.org/api/v1/data_sets/append',data=json.dumps(payload),headers=headers)
     #print(request)
     #print(request.text)
-#	request.text
+#   request.text
 
 
 print('oof3')
