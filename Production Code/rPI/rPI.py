@@ -1,18 +1,18 @@
 import serial,requests,json,time,datetime,sys
 
 #Constants
-dataset_base_name = 'BoatHouseTest'
-contribution_key = 'python'
-contributor_name = 'Raspberry Pi'
-dataset_limit = 720
-project_ID = '3744'
+DATASET_BASE_NAME = 'Production'
+CONTRIBUTION_KEY = 'python'
+CONTRIBUTOR_NAME = 'Raspberry Pi'
+DATASET_LIMIT = 720
+PROJECT_ID = '3856'
 
-latitude_ID = '18770'
-longitude_ID = '18771'
-timestamp_ID = '18772'
-reading_ID = '18773'
-depth_ID = '18774'
-type_ID = '18775'
+TIMESTAMP = '19412'
+READING = '19413'
+NODE = '19414'
+ADDRESS = '19415'
+
+
 
 print('oof1')
 
@@ -22,21 +22,19 @@ def get_formatted_timestamp():
 
 def init_new_dataset():
     payload = {
-        'title': dataset_base_name+datetime.datetime.fromtimestamp(time.time()).strftime('_%Y_%m_%d_%H_%M_%S'),
-        'contribution_key': contribution_key,
-        'contributor_name': contributor_name,
+        'title': DATASET_BASE_NAME+datetime.datetime.fromtimestamp(time.time()).strftime('_%Y_%m_%d_%H_%M_%S'),
+        'contribution_key': CONTRIBUTION_KEY,
+        'contributor_name': CONTRIBUTOR_NAME,
         'data':{#garbage placeholder data since you cannot create an empty dataset >:(
-            latitude_ID:['0'],
-            longitude_ID:['0'],
-            timestamp_ID:[get_formatted_timestamp()],
-            reading_ID:['-1'],
-            depth_ID:['-1'],
-            type_ID:['NULL']
-        }
+            TIMESTAMP:[get_formatted_timestamp()],
+            NODE:['0'],
+            ADDRESS:['0'],
+            READING:['0'],
+            }
     }
     #print(payload)
     headers = {'content-type':'application/json'}
-    url = 'https://isenseproject.org/api/v1/projects/'+project_ID+'/jsonDataUpload'
+    url = 'https://isenseproject.org/api/v1/projects/'+PROJECT_ID+'/jsonDataUpload'
     print(url)
     request = requests.post(url,data=json.dumps(payload),headers=headers)
     #print(request)
