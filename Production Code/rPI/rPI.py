@@ -7,10 +7,10 @@ CONTRIBUTOR_NAME = 'Raspberry Pi'
 DATASET_LIMIT = 720
 PROJECT_ID = '3856'
 
-TIMESTAMP = '19412'
-READING = '19413'
-NODE = '19414'
-ADDRESS = '19415'
+TIMESTAMP_ID = '19412'
+READING_ID = '19413'
+NODE_ID = '19414'
+ADDRESS_ID = '19415'
 
 
 
@@ -26,10 +26,10 @@ def init_new_dataset():
         'contribution_key': CONTRIBUTION_KEY,
         'contributor_name': CONTRIBUTOR_NAME,
         'data':{#garbage placeholder data since you cannot create an empty dataset >:(
-            TIMESTAMP:[get_formatted_timestamp()],
-            NODE:['0'],
-            ADDRESS:['0'],
-            READING:['0'],
+            TIMESTAMP_ID:[get_formatted_timestamp()],
+            NODE_ID:['0'],
+            ADDRESS_ID:['0'],
+            READING_ID:['0'],
             }
     }
     #print(payload)
