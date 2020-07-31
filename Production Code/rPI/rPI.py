@@ -58,6 +58,7 @@ feather_ids_to_address_dictionaries_for_descriptions = {
                 '30':'temperature2',
                 '31':'conductivity2'
 	}
+        
 }
 
 node_ids_to_position_information = {
@@ -72,7 +73,7 @@ node_ids_to_position_information = {
 dataset_base_name = 'BoatHouseTest'
 contribution_key = 'python'
 contributor_name = 'Raspberry Pi'
-dataset_limit = 15
+dataset_limit = 720
 project_ID = '3744'
 
 latitude_ID = '18770'
@@ -82,17 +83,18 @@ reading_ID = '18773'
 depth_ID = '18774'
 type_ID = '18775'
 
-if(len(sys.argv)<3):
-    print('You need to specify the dataset to use and what to start the datapoint counter at using command line arguments like this: python /path/to/script ID_OF_DATASET COUNTER_START')
-    exit()
+#if(len(sys.argv)<3):
+#    print('You need to specify the dataset to use and what to start the datapoint counter at using command line arguments like this: python /path/to/script ID_OF_DATASET COUNTER_START')
+#    exit()
 
-try:
-    datapoint_counter = int(sys.argv[2])
-except:
-    print('invalid argument to start datapoint counter must be an integer')
-    exit()
+#try:
+#    datapoint_counter = int(sys.argv[2])
+#except:
+#    print('invalid argument to start datapoint counter must be an integer')
+#    exit()
 
-dataset_ID = sys.argv[1]
+datapoint_counter=0
+dataset_ID = init_new_dataset()
 
 print('oof2')
 
@@ -139,10 +141,13 @@ while True:
         if(datapoint_counter>=dataset_limit):
             dataset_ID=init_new_dataset()
             datapoint_counter=0
-        input = base_station_feather.readline()#.decode('UTF-8')
+        input = base_station_feather.readline().decode('UTF-8')
         print('The input I got was:', input)
         try:
             feather_identifier, sensor_identifier, reading = input.split(':')
+            feather_identifier = feather_identifier.strip()
+            sensor_identifier = sensor_identifier.strip()
+            reading = reading.strip()
             #feather_indentifer = str(feather_identifier)
             #sensor_identifier = str(sensor_identifier)
             #reading = str(reading)
@@ -173,7 +178,7 @@ while True:
     except KeyboardInterrupt as e:
         raise
     except ValueError as e:
-	pass
+        pass
     except:
         e = sys.exc_info()[0]
         print(e)
