@@ -119,7 +119,7 @@ while True:
             feather_identifier = feather_identifier.strip()
             sensor_identifier = sensor_identifier.strip()
             reading = reading.strip()
-            #feather_indentifer = str(feather_identifier)
+            #feather_indentifer = str(feather_identifier)-
             #sensor_identifier = str(sensor_identifier)
             #reading = str(reading)
         except ValueError:
