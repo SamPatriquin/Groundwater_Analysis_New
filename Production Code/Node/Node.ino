@@ -1,4 +1,5 @@
 #include <Wire.h>
+#include "Radio.h"
 #include "TemperatureEzo.h"
 #include "OrpEzo.h"
 #include "ConductivityEzo.h"
@@ -9,9 +10,14 @@ OrpEzo orpEzo(12);
 ConductivityEzo condEzo(13);
 DissolvedOxygenEzo doEzo(14);
 
+// Change these for each node
+#define NODE_ID = 1;
+#define NUMBER_OF_PODS = 1;
+
 void setup() {
   Wire.begin();
   Serial.begin(9600);
+  setupRadio();
 }
 
 void loop() {
