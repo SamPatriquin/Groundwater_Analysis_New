@@ -43,7 +43,7 @@ uint8_t recieveRadioMessage(){
     if(rf95.recv(buf, &len)){
       return buf;  
     }
-    return -1;
+  }
+  return -1;
 }
-
 #endif
