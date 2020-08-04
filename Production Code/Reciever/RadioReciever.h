@@ -38,9 +38,11 @@ bool setupRadio(){
 uint8_t recieveRadioMessage(){
   uint8_t buf[SIZE_RADIO_BUFFER];
   uint8_t len = sizeof(buf);
-  
-  if(rf95.recv(buf, &len)){
-    return buf;  
+
+  if(rf95.available()){
+    if(rf95.recv(buf, &len)){
+      return buf;  
+    }
   }
 }
 
