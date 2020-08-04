@@ -1,41 +1,40 @@
 import serial,requests,json,time,datetime,sys
+
+#Constants
+DATASET_BASE_NAME = 'Production'
+CONTRIBUTION_KEY = 'python'
+CONTRIBUTOR_NAME = 'Raspberry Pi'
+DATASET_LIMIT = 720
+PROJECT_ID = '3856'
+
+TIMESTAMP_ID = '19412'
+READING_ID = '19413'
+NODE_ID = '19414'
+ADDRESS_ID = '19415'
+
+
+
 print('oof1')
-def append(data):
-    payload = {
-        'contribution_key':contribution_key,
-        'id':dataset_ID,
-        'data':data
-    }
-    headers = {'content-type':'application/json'}
-    request = requests.post('https://isenseproject.org/api/v1/data_sets/append',data=json.dumps(payload),headers=headers)
-    json.loads(request.text)
-    #print(request) 
-    #print(request.url)
-    #print(request.text)
 
-def current_timestamp():
-    currentTime = time.time()
-    formattedTime = datetime.datetime.fromtimestamp(currentTime).strftime('%Y-%m-%d %H:%M:%S')
-    return formattedTime
-
+#Function helpers
+def get_formatted_timestamp():
+    return datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
 
 def init_new_dataset():
     payload = {
-        'title': dataset_base_name+datetime.datetime.fromtimestamp(time.time()).strftime('_%Y_%m_%d_%H_%M_%S'),
-        'contribution_key': contribution_key,
-        'contributor_name': contributor_name,
+        'title': DATASET_BASE_NAME+datetime.datetime.fromtimestamp(time.time()).strftime('_%Y_%m_%d_%H_%M_%S'),
+        'contribution_key': CONTRIBUTION_KEY,
+        'contributor_name': CONTRIBUTOR_NAME,
         'data':{#garbage placeholder data since you cannot create an empty dataset >:(
-            latitude_ID:['0'],
-            longitude_ID:['0'],
-            timestamp_ID:[current_timestamp()],
-            reading_ID:['-1'],
-            depth_ID:['-1'],
-            type_ID:['NULL']
-        }
+            TIMESTAMP_ID:[get_formatted_timestamp()],
+            NODE_ID:['0'],
+            ADDRESS_ID:['0'],
+            READING_ID:['0'],
+            }
     }
-    print(payload)
+    #print(payload)
     headers = {'content-type':'application/json'}
-    url = 'https://isenseproject.org/api/v1/projects/'+project_ID+'/jsonDataUpload'
+    url = 'https://isenseproject.org/api/v1/projects/'+PROJECT_ID+'/jsonDataUpload'
     print(url)
     request = requests.post(url,data=json.dumps(payload),headers=headers)
     #print(request)
@@ -46,6 +45,18 @@ def init_new_dataset():
     newid = request_json['id']
     print('Switching to dataset with id: ',newid)
     return newid
+
+def iSense_append_data(contribution_key,dataset_ID,data):
+    payload = {
+        'contribution_key':contribution_key,
+        'id':dataset_ID,
+    'data':data
+    }
+    headers = {'content-type':'application/json'}
+    request = requests.post('https://isenseproject.org/api/v1/data_sets/append',data=json.dumps(payload),headers=headers)
+    #print(request)
+    #print(request.text)
+#   request.text
 
 
 
@@ -70,61 +81,19 @@ node_ids_to_position_information = {
     }
 }
 
-dataset_base_name = 'BoatHouseTest'
-contribution_key = 'python'
-contributor_name = 'Raspberry Pi'
-dataset_limit = 720
-project_ID = '3744'
-
-latitude_ID = '18770'
-longitude_ID = '18771'
-timestamp_ID = '18772'
-reading_ID = '18773'
-depth_ID = '18774'
-type_ID = '18775'
-
-#if(len(sys.argv)<3):
-#    print('You need to specify the dataset to use and what to start the datapoint counter at using command line arguments like this: python /path/to/script ID_OF_DATASET COUNTER_START')
-#    exit()
-
-#try:
-#    datapoint_counter = int(sys.argv[2])
-#except:
-#    print('invalid argument to start datapoint counter must be an integer')
-#    exit()
 
 datapoint_counter=0
 dataset_ID = init_new_dataset()
 
 print('oof2')
 
-def get_formatted_timestamp():
-    return datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
-
-def iSense_append_data(contribution_key,dataset_ID,data):
-    payload = {
-        'contribution_key':contribution_key,
-        'id':dataset_ID,
-    'data':data
-    }
-    headers = {'content-type':'application/json'}
-    request = requests.post('https://isenseproject.org/api/v1/data_sets/append',data=json.dumps(payload),headers=headers)
-    #print(request)
-    #print(request.text)
-#   request.text
-
-
-print('oof3')
-
+# Connect to feather with Serial
 if len(sys.argv) > 3:
     base_station_feather_identifier = sys.argv[3]
 else:
     base_station_feather_identifier = '/dev/ttyACM0'
 
 print('Will attempt to communicate with feather at: ' + base_station_feather_identifier)
-
-
-
 
 try:
     base_station_feather = serial.Serial(base_station_feather_identifier,9600)
