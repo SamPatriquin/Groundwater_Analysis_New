@@ -6,5 +6,5 @@ void setup() {
 }
 
 void loop() {
-  Serial.print(recieveRadioMessage());
+  Serial.write((char*)recieveRadioMessage());
 }
