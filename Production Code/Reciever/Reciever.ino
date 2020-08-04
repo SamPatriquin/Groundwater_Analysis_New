@@ -1,4 +1,4 @@
-#inlcude "RadioReciever.h"
+#include "RadioReciever.h"
 
 void setup() {
   Serial.begin(9600);
@@ -6,5 +6,5 @@ void setup() {
 }
 
 void loop() {
-  Serial.print(recieveRadioMessage();)
+  Serial.print(recieveRadioMessage());
 }
