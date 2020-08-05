@@ -12,8 +12,6 @@ READING_ID = '19413'
 NODE_ID = '19414'
 ADDRESS_ID = '19415'
 
-
-
 print('oof1')
 
 #Function helpers
@@ -29,17 +27,13 @@ def init_new_dataset():
             TIMESTAMP_ID:[get_formatted_timestamp()],
             NODE_ID:['0'],
             ADDRESS_ID:['0'],
-            READING_ID:['0'],
+            READING_ID:['0']
             }
     }
-    #print(payload)
     headers = {'content-type':'application/json'}
     url = 'https://isenseproject.org/api/v1/projects/'+PROJECT_ID+'/jsonDataUpload'
     print(url)
     request = requests.post(url,data=json.dumps(payload),headers=headers)
-    #print(request)
-    #print(request.url)
-    #print(request.text)
     request_json=json.loads(request.text)
     print(request)
     newid = request_json['id']
@@ -54,32 +48,7 @@ def iSense_append_data(contribution_key,dataset_ID,data):
     }
     headers = {'content-type':'application/json'}
     request = requests.post('https://isenseproject.org/api/v1/data_sets/append',data=json.dumps(payload),headers=headers)
-    #print(request)
-    #print(request.text)
-#   request.text
 
-
-
-feather_ids_to_address_dictionaries_for_descriptions = {
-    '1337':
-    {
-        '7':'battery',
-        '20':'temperature1',
-        '21':'conductivity1',
-                '30':'temperature2',
-                '31':'conductivity2'
-    }
-        
-}
-
-node_ids_to_position_information = {
-    '1337':
-    {
-        'depth':'5',
-        'lat':'5',
-        'long':'5'
-    }
-}
 
 
 datapoint_counter=0
@@ -107,39 +76,34 @@ except:
 
 while True:
     try:
-        if(datapoint_counter>=dataset_limit):
+        if(datapoint_counter>=DATASET_LIMIT):
             dataset_ID=init_new_dataset()
             datapoint_counter=0
         input = base_station_feather.readline().decode('UTF-8')
         print('The input I got was:', input)
         try:
-            feather_identifier, sensor_identifier, reading = input.split(':')
-            feather_identifier = feather_identifier.strip()
-            sensor_identifier = sensor_identifier.strip()
+            node, address, reading = input.split(':')
+            node = node.strip()
+            address = address.strip()
             reading = reading.strip()
-            #feather_indentifer = str(feather_identifier)
-            #sensor_identifier = str(sensor_identifier)
-            #reading = str(reading)
         except ValueError:
             print('malformed message - wrong number of delimeters')
             raise
         try:
-            print('feather identifier was: ',feather_identifier)
-            print('sensor identifier was: ', sensor_identifier)
+            print('node was: ',node)
+            print('address was: ', address)
             print('reading was: ', reading)
             data = {
-                timestamp_ID:[get_formatted_timestamp()],
-                latitude_ID:[node_ids_to_position_information[feather_identifier]['lat']],
-                longitude_ID:[node_ids_to_position_information[feather_identifier]['long']],
-                depth_ID:[node_ids_to_position_information[feather_identifier]['depth']],
-                reading_ID:[reading],
-                type_ID:[feather_ids_to_address_dictionaries_for_descriptions[feather_identifier][sensor_identifier]]
-            }
+                TIMESTAMP_ID:[get_formatted_timestamp()],
+                NODE_ID:[node],
+                ADDRESS_ID:[address],
+                READING_ID:[reading]
+                }
         except KeyError:
             print('unexpected sensor identifier encountered - no corresponding feild in iSense')
             raise
         try:
-            iSense_append_data(contribution_key, dataset_ID, data)
+            iSense_append_data(CONTRIBUTION_KEY, dataset_ID, data)
             datapoint_counter=datapoint_counter+1
         except requests.exceptions.RequestException as e:
             print('error making request to iSense - no internet or issues with iSense')
