@@ -1,10 +1,10 @@
-#include <Wire.h>
-
-/*
- * Wiring: TX on Feather -> RX on EZO board
- *         RX on Feather -> TX on EZO board
+//Wiring for I2C communication:
+/*  -SCL from feather to RX on EZO
+ *  -SDA from feather to TX on EZO
  */
  
+#include <Wire.h>
+
 String getInput();
 bool getConfirmation();
 
