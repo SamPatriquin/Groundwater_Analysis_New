@@ -21,6 +21,7 @@ void setup() {
 }
 
 void loop() {
+  ezo_board.print(getInput().c_str());
   Serial.print(ezo_board.read());
 }
 

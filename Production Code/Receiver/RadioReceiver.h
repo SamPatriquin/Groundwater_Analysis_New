@@ -1,5 +1,5 @@
-#ifndef _RADIO_RECIEVER_H
-#define _RADIO_RECIEVER_H
+#ifndef _RADIO_RECEIVER_H
+#define _RADIO_RECEIVER_H
 #include <RH_RF95.h>
  
 #define RFM95_CS 8
@@ -38,4 +38,4 @@ bool setupRadio(){
 //  }
 //}
 
-#endif //_RADIO_RECIEVER_H
+#endif //_RADIO_RECEIVER_H

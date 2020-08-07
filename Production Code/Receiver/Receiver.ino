@@ -1,4 +1,4 @@
-#include "RadioReciever.h"
+#include "RadioReceiver.h"
 
 void setup() {
   Serial.begin(9600);
