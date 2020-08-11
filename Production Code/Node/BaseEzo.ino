@@ -11,6 +11,7 @@ void BaseEzo::toSleep(){
 }
 
 void BaseEzo::enable(){
+  digitalWrite(enablePin, HIGH);
 }
 
 String BaseEzo::takeReading(){
@@ -39,6 +40,6 @@ String BaseEzo::takeReading(){
 
 }
 
-void disable(){
-  
+void BaseEzo::disable(){
+  digitalWrite(enablePin, LOW);
 }

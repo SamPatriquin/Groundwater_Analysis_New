@@ -3,7 +3,7 @@
 
 class ConductivityEzo: public BaseEzo{
 public:
-  ConductivityEzo(int address): BaseEzo(address){}
+  ConductivityEzo(int address): BaseEzo(address){ enablePin = A2; pinMode(enablePin, OUTPUT);}
   void sendCompensation(String temperature);
 };
 

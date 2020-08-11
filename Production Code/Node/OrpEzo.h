@@ -4,7 +4,7 @@
 
 class OrpEzo: public BaseEzo{
 public:
-  OrpEzo(int address): BaseEzo(address){}
+  OrpEzo(int address): BaseEzo(address){ enablePin = A1; pinMode(enablePin, OUTPUT); }
 };
 
 #endif // _ORP_EZO_H

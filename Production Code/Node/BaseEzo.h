@@ -13,6 +13,7 @@ public:
   void disable();
 protected:
   int address;
+  int enablePin;
 };
 
 #endif // _BASEEZO_H
