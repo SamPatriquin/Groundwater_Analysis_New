@@ -8,7 +8,9 @@ public:
   BaseEzo(int address);
   int getAddress(){return address;}
   void toSleep();
+  void enable();
   String takeReading();
+  void disable();
 protected:
   int address;
 };

@@ -10,6 +10,9 @@ void BaseEzo::toSleep(){
   Wire.endTransmission();
 }
 
+void BaseEzo::enable(){
+}
+
 String BaseEzo::takeReading(){
   Wire.beginTransmission(address);
   Wire.write("R");
@@ -34,4 +37,8 @@ String BaseEzo::takeReading(){
     return String("ERR");
   }
 
+}
+
+void disable(){
+  
 }

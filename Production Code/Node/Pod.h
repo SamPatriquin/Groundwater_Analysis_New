@@ -10,7 +10,9 @@
 class Pod{
 public:
   Pod(String node_id, int pod_id);
+  void enable();
   void cycle();
+  void disable();
 private:
   TemperatureEzo tempEzo;
   OrpEzo orpEzo;

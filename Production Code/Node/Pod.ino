@@ -9,6 +9,10 @@ Pod::Pod(String node_id, int pod_id):
     this->node_id = node_id;
   }
 
+void Pod::enable(){
+  
+}
+
 void Pod::cycle(){
   String temperature = tempEzo.takeReading();
   sendRadioMessage(node_id, String(tempEzo.getAddress()), temperature);
@@ -32,4 +36,8 @@ void Pod::cycle(){
   String dissolvedOxygen = doEzo.takeReading();
   sendRadioMessage(node_id, String(doEzo.getAddress()), dissolvedOxygen);
   doEzo.toSleep();
+}
+
+void Pod::disable(){
+  
 }
