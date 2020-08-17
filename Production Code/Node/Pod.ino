@@ -32,28 +32,21 @@ void Pod::enable(){
 }
 
 void Pod::cycle(){
-  String temperature = tempEzo.takeReading();
-  //sendRadioMessage(nodeId, String(tempEzo.getAddress()), temperature);
-  tempEzo.toSleep();
+  tempEzo.enable();
   delay(1000);
+  tempEzo.disable();
+
+  orpEzo.enable();
+  delay(1000);
+  orpEzo.disable();
   
-  String orp = orpEzo.takeReading();
-  //sendRadioMessage(nodeId, String(orpEzo.getAddress()), orp);
-  orpEzo.toSleep();
+  condEzo.enable();
   delay(1000);
+  condEzo.diable();
   
-  condEzo.sendCompensation(temperature);
+  doEzo.enable();
   delay(1000);
-  String conductivity = condEzo.takeReading();
-  //sendRadioMessage(nodeId, String(condEzo.getAddress()), conductivity);
-  condEzo.toSleep();
-  delay(1000);
-  
-  doEzo.sendCompensation(temperature, conductivity);
-  delay(1000);
-  String dissolvedOxygen = doEzo.takeReading();
-  //sendRadioMessage(nodeId, String(doEzo.getAddress()), dissolvedOxygen);
-  doEzo.toSleep();
+  condEzo.diable();
 }
 
 void Pod::disable(){
