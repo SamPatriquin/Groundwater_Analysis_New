@@ -42,11 +42,11 @@ void Pod::cycle(){
   
   condEzo.enable();
   delay(1000);
-  condEzo.diable();
+  condEzo.disable();
   
   doEzo.enable();
   delay(1000);
-  condEzo.diable();
+  condEzo.disable();
 }
 
 void Pod::disable(){
