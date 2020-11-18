@@ -40,8 +40,10 @@ void sendRadioMessage(String node, String address, String reading){
   message.reserve(SIZE_RADIO_BUFFER);
   message+= node += String(":") += address += String(":") += reading;
   Serial.println(message.c_str());
+  unsigned long startTime = millis();
   rf95.send((uint8_t*)message.c_str(), SIZE_RADIO_BUFFER);
-  rf95.waitPacketSent();
+  unsigned long currentTime = millis();
+  Serial.println(currentTime - startTime);
 }
 
 

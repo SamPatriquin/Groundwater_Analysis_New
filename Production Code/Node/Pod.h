@@ -9,14 +9,17 @@
 
 class Pod{
 public:
-  Pod(String node_id, int pod_id);
+  Pod(String nodeId, int podId);
+  void enable();
   void cycle();
+  void disable();
 private:
   TemperatureEzo tempEzo;
   OrpEzo orpEzo;
   ConductivityEzo condEzo;
   DissolvedOxygenEzo doEzo;
-  String node_id;
+  String nodeId;
+  int enablePin;
 };
 
 #endif // _POD_H

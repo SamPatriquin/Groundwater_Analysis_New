@@ -10,6 +10,17 @@ void BaseEzo::toSleep(){
   Wire.endTransmission();
 }
 
+void BaseEzo::enable(){
+  digitalWrite(enablePin, HIGH);
+/*
+  // Take 5 dud readings to warm the sensor up
+  for(int i = 0; i < 5; ++i){
+    takeReading();
+  }
+  Serial.println(takeReading());
+  */
+}
+
 String BaseEzo::takeReading(){
   Wire.beginTransmission(address);
   Wire.write("R");
@@ -34,4 +45,8 @@ String BaseEzo::takeReading(){
     return String("ERR");
   }
 
+}
+
+void BaseEzo::disable(){
+  digitalWrite(enablePin, LOW);
 }
