@@ -12,11 +12,13 @@ void BaseEzo::toSleep(){
 
 void BaseEzo::enable(){
   digitalWrite(enablePin, HIGH);
-
+/*
   // Take 5 dud readings to warm the sensor up
   for(int i = 0; i < 5; ++i){
     takeReading();
   }
+  Serial.println(takeReading());
+  */
 }
 
 String BaseEzo::takeReading(){

@@ -5,7 +5,7 @@
 
 class DissolvedOxygenEzo: public BaseEzo {
   public:
-    DissolvedOxygenEzo(int address): BaseEzo(address) { enablePin = A3; pinMode(enablePin, OUTPUT);}
+    DissolvedOxygenEzo(int address): BaseEzo(address) { enablePin = A0; pinMode(enablePin, OUTPUT);}
     void sendCompensation(String temperature, String salinity);
 };
 

@@ -4,7 +4,7 @@
 
 // Change these for each node
 const String NODE_ID("1");
-const int NUMBER_OF_PODS = 2;
+const int NUMBER_OF_PODS = 1;
 
 // Function Declarations
 void initializePods(int numberOfPods);
