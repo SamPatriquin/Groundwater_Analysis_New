@@ -12,13 +12,13 @@ void BaseEzo::toSleep(){
 
 void BaseEzo::enable(){
   digitalWrite(enablePin, HIGH);
-/*
+
   // Take 5 dud readings to warm the sensor up
   for(int i = 0; i < 5; ++i){
     takeReading();
   }
   Serial.println(takeReading());
-  */
+  
 }
 
 String BaseEzo::takeReading(){
@@ -30,7 +30,7 @@ String BaseEzo::takeReading(){
 
   Wire.requestFrom(address, MAX_EZO_RESPONSE_SIZE, true);
   
-  int responseCode = Wire.read();
+  unsigned int responseCode = Wire.read();
 
   if( responseCode == 1 ) { // 1 means the response is valid
     char current;

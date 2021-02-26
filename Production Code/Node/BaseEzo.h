@@ -1,4 +1,4 @@
-#ifndef _BASEEZO_H`
+#ifndef _BASEEZO_H
 #define _BASEEZO_H
 
 #define MAX_EZO_RESPONSE_SIZE 40

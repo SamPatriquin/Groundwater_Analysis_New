@@ -51,5 +51,5 @@ void loop() {
       pod1.disable();
       break;
   }
-  delay(5000); // Change for how long each node will wait before new cycle
+  delay(500); // Change for how long each node will wait before new cycle
 }

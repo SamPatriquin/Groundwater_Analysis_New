@@ -33,20 +33,20 @@ void Pod::enable(){
 
 void Pod::cycle(){
   tempEzo.enable();
-  delay(2000);
-  tempEzo.disable();
+  delay(10);
+  //tempEzo.disable();
 
   orpEzo.enable();
-  delay(2000);
-  orpEzo.disable();
+  delay(10);
+  //orpEzo.disable();
   
   condEzo.enable();
-  delay(2000);
-  condEzo.disable();
+  delay(10);
+  //condEzo.disable();
   
   doEzo.enable();
-  delay(2000);
-  doEzo.disable();
+  delay(10);
+  //doEzo.disable();
 }
 
 void Pod::disable(){

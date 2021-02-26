@@ -5,10 +5,10 @@
 #define Enable2 11
 
 //Mux selects
-#define S0 10
-#define S1 9
-#define S2 6
-#define S3 5
+#define S0 5
+#define S1 6
+#define S2 9
+#define S3 10
 
 #define ADDRESS 11
 #define MAX_EZO_RESPONSE_SIZE 40
