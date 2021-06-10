@@ -1,0 +1,300 @@
+{
+  "uuid": "667689d69305230db4c0bd834212bdd0",
+  "path": "Offline/Groundwater_Local",
+  "name": "Groundwater_Local",
+  "content": "",
+  "created_at": "2021-03-22 19:00:06",
+  "updated_at": "2021-03-30 17:24:33",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "5eecb12e4b1c650f4096f4d5c87553ef",
+      "title": "Sheet_3",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "bdb40a2c1fe94969978f08b51269a0a9": 1,
+        "a3f2dcf5ed814f5d8dc72036ef18fa96": 16,
+        "b47690d4db0c456f8a1813d1491c5cdf": 3,
+        "6bf055a51ada4a07b18e6fb7c61bee46": 16,
+        "4a52e8d5749741319739aa214bdc17de": 48,
+        "cb38055916184cdc9f439ff33ee92ec4": 16,
+        "a68dc5e6a9944c46b7604648a43dcd65": 5,
+        "a9aa2b14f188405792fa87ac344499a4": 1,
+        "00ffc7a1cf56492787a8d32304b87b46": 2,
+        "8976865ae13943d5b108e0e41cdfdab0": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "0.1uF",
+          2,
+          "C_DIP_DRY_TANTALUM",
+          "C2,C1",
+          {
+            "BOM_Supplier Part": "478-9315-ND",
+            "BOM_Supplier": "Digi-Key",
+            "BOM_Manufacturer": "AVX",
+            "BOM_Manufacturer Part": "TAP104M050SCS",
+            "puuid": "f32aa56c56c646959fb6a4704eb45b35",
+            "uuid": "00ffc7a1cf56492787a8d32304b87b46"
+          }
+        ],
+        [
+          "10K",
+          16,
+          "RES-TH_BD2.4-L6.3-P10.30-D0.6",
+          "R1,R2,R3,R4,R7,R16,R6,R5,R11,R10,R9,R8,R15,R14,R13,R12",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C410695",
+            "BOM_Manufacturer": "TyoHM",
+            "BOM_Manufacturer Part": "RN 1/4W 10K F T/B A1",
+            "puuid": "2915f1f0a54941d7b912decfe617b47f",
+            "uuid": "4a52e8d5749741319739aa214bdc17de"
+          }
+        ],
+        [
+          "4.7K",
+          32,
+          "RES-TH_BD2.4-L6.3-P10.30-D0.6",
+          "RD2,RD1,RD3,RD4,RD5,RD6,RD7,RD8,RD14,RD13,R32,RD31,RD12,RD11,RD9,RD10,RD22,RD21,RD20,RD19,RD18,RD17,RD15,RD16,RD30,RD29,RD28,RD27,RD26,RD25,RD23,RD24",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C410695",
+            "BOM_Manufacturer": "TyoHM",
+            "BOM_Manufacturer Part": "RN 1/4W 10K F T/B A1",
+            "puuid": "2915f1f0a54941d7b912decfe617b47f",
+            "uuid": "4a52e8d5749741319739aa214bdc17de"
+          }
+        ],
+        [
+          "BS170-D26Z",
+          16,
+          "TO-92-3_L4.8-W3.7-P2.54-L",
+          "Q8,Q15,Q3,Q10,Q12,Q14,Q1,Q16,Q9,Q13,Q2,Q4,Q5,Q11,Q7,Q6",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C258163",
+            "BOM_Manufacturer": "ON Semicon",
+            "BOM_Manufacturer Part": "BS170-D26Z",
+            "puuid": "619489e674074de888fe8dd8f6b9799e",
+            "uuid": "6bf055a51ada4a07b18e6fb7c61bee46"
+          }
+        ],
+        [
+          "10uF",
+          1,
+          "CAP-TH_BD8.0-P3.50-D1.0-FD",
+          "C3",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "AISHI",
+            "BOM_Manufacturer Part": "EGW2DM100F16OT",
+            "BOM_Supplier Part": "C112475",
+            "puuid": "90d1b58a2d284d63b5d026a0c4e38bab",
+            "uuid": "8976865ae13943d5b108e0e41cdfdab0"
+          }
+        ],
+        [
+          "ORP",
+          1,
+          "EZO-PH",
+          "U6",
+          {
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "puuid": "44ece840ba074ea587b63e799a4d7e4c",
+            "uuid": "a3f2dcf5ed814f5d8dc72036ef18fa96"
+          }
+        ],
+        [
+          "EZO-Temp",
+          3,
+          "EZO-PH",
+          "U1,U5,U13",
+          {
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "puuid": "44ece840ba074ea587b63e799a4d7e4c",
+            "uuid": "a3f2dcf5ed814f5d8dc72036ef18fa96"
+          }
+        ],
+        [
+          "EZO-ORP",
+          3,
+          "EZO-PH",
+          "U14,U10,U2",
+          {
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "puuid": "44ece840ba074ea587b63e799a4d7e4c",
+            "uuid": "a3f2dcf5ed814f5d8dc72036ef18fa96"
+          }
+        ],
+        [
+          "EZO-EC",
+          4,
+          "EZO-PH",
+          "U11,U3,U7,U15",
+          {
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "puuid": "44ece840ba074ea587b63e799a4d7e4c",
+            "uuid": "a3f2dcf5ed814f5d8dc72036ef18fa96"
+          }
+        ],
+        [
+          "EZO-TEMP",
+          1,
+          "EZO-PH",
+          "U9",
+          {
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "puuid": "44ece840ba074ea587b63e799a4d7e4c",
+            "uuid": "a3f2dcf5ed814f5d8dc72036ef18fa96"
+          }
+        ],
+        [
+          "EZO-DO",
+          4,
+          "EZO-PH",
+          "U16,U4,U8,U12",
+          {
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "puuid": "44ece840ba074ea587b63e799a4d7e4c",
+            "uuid": "a3f2dcf5ed814f5d8dc72036ef18fa96"
+          }
+        ],
+        [
+          "HDR-M-2.54_1x2",
+          1,
+          "HDR-M-2.54_1X2",
+          "J6",
+          {
+            "BOM_Supplier Part": "C124375",
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "70aa5812f21f4991bf427395d51849f4",
+            "uuid": "a9aa2b14f188405792fa87ac344499a4"
+          }
+        ],
+        [
+          "HDR-M-2.54_1x3",
+          5,
+          "HDR-M-2.54_1X3",
+          "J5,J4,J3,J2,J1",
+          {
+            "BOM_Supplier Part": "C180248",
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "9f77654394344f25b3de138e0fe05ff6",
+            "uuid": "a68dc5e6a9944c46b7604648a43dcd65"
+          }
+        ],
+        [
+          "CD74HCT4067M",
+          3,
+          "SOIC-24_L15.4-W7.5-P1.27-LS10.3-BL",
+          "MUX2,MUX3,MUX1",
+          {
+            "BOM_Supplier": "Mouser",
+            "BOM_Supplier Part": "C424181",
+            "BOM_Manufacturer": "Texas Instruments",
+            "BOM_Manufacturer Part": "CD74HCT4067M",
+            "BOM_LCSC Assembly": "Yes",
+            "puuid": "bba5e3feccf4495d9f7e853d1b18f955",
+            "uuid": "b47690d4db0c456f8a1813d1491c5cdf"
+          }
+        ],
+        [
+          "Feather 32u4 Basic",
+          1,
+          "FEATHER 32U4 BASIC",
+          "P1",
+          {
+            "BOM_Manufacturer Part": "",
+            "puuid": "c7acf878c1a84a8e86b5f1f054172987",
+            "uuid": "bdb40a2c1fe94969978f08b51269a0a9"
+          }
+        ],
+        [
+          "BWSMA-KE-P001",
+          16,
+          "SMA-SMD_BWSMA-KE-P001",
+          "RF7,RF9,RF11,RF0,RF13,RF14,RF15,RF8,RF10,RF6,RF5,RF4,RF3,RF2,RF1,RF12",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C496550",
+            "BOM_Manufacturer": "BAT WIRELESS",
+            "BOM_Manufacturer Part": "BWSMA-KE-P001",
+            "puuid": "06231217b5f84087a9d11d84a0f4647d",
+            "uuid": "cb38055916184cdc9f439ff33ee92ec4"
+          }
+        ]
+      ],
+      "updateTime": 1617137809,
+      "createTime": 1616454073,
+      "histories": [],
+      "created_at": "2021-03-22 19:01:13",
+      "updated_at": "2021-03-30 16:56:49"
+    },
+    {
+      "uuid": "95f4fed7097519f3ec171c2d0fd2510c",
+      "puuid": "667689d69305230db4c0bd834212bdd0",
+      "title": "PCB_2020-12-28_14-42-41_2021-02-23_22-59-04",
+      "filename": "PCB_2020-12-28_14-42-41_2021-02-23_22-59-04.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "619489e674074de888fe8dd8f6b9799e": 16,
+        "c7acf878c1a84a8e86b5f1f054172987": 1,
+        "06231217b5f84087a9d11d84a0f4647d": 16,
+        "44ece840ba074ea587b63e799a4d7e4c": 16,
+        "bba5e3feccf4495d9f7e853d1b18f955": 3,
+        "f32aa56c56c646959fb6a4704eb45b35": 2,
+        "70aa5812f21f4991bf427395d51849f4": 1,
+        "9f77654394344f25b3de138e0fe05ff6": 5,
+        "90d1b58a2d284d63b5d026a0c4e38bab": 1,
+        "2915f1f0a54941d7b912decfe617b47f": 48
+      },
+      "BOM": [],
+      "updateTime": 1617139473,
+      "createTime": 1616454086,
+      "histories": [],
+      "created_at": "2021-03-22 19:01:26",
+      "updated_at": "2021-03-30 17:24:33"
+    }
+  ],
+  "sort": [],
+  "title": "Groundwater_Local",
+  "foldername": "Groundwater_Local",
+  "schfilename": "Groundwater_Local.json",
+  "schfilemtime": 1617137809665
+}
