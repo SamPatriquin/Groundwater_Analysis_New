@@ -15,20 +15,20 @@ void Pod::cycle(){
   delay(100);
   //tempEzo.disable();
 
-  String orp = orpEzo.takeReading();
+  String orp = orpEzo.selectAndRead();
   sendRadioMessage(nodeId, String(orpEzo.getAddress()), orp);
   delay(100);
   //orpEzo.disable();
   
   condEzo.sendCompensation(temperature);
   delay(100);
-  String conductivity = condEzo.takeReading();
+  String conductivity = condEzo.selectAndRead();
   sendRadioMessage(nodeId, String(condEzo.getAddress()), conductivity);
   delay(100);
   
   doEzo.sendCompensation(temperature, conductivity);
   delay(100);
-  String dissolvedOxygen = doEzo.takeReading();
+  String dissolvedOxygen = doEzo.selectAndRead();
   sendRadioMessage(nodeId, String(doEzo.getAddress()), dissolvedOxygen);
   delay(100);
 }
