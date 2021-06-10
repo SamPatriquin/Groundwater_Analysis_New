@@ -1,24 +1,18 @@
 #include "BaseEzo.h"
+#include "AddressMapping.h"
 
 BaseEzo::BaseEzo(int address){
   this->address = address;
 }
 
-void BaseEzo::toSleep(){
-  Wire.beginTransmission(address);
-  Wire.write("Sleep");
-  Wire.endTransmission();
-}
-
-void BaseEzo::enable(){
-  digitalWrite(enablePin, HIGH);
-
+String BaseEzo::selectAndRead(){
+  muxSelect(this->address); //In MUX select
+  
   // Take 5 dud readings to warm the sensor up
   for(int i = 0; i < 5; ++i){
     takeReading();
   }
-  Serial.println(takeReading());
-  
+  return takeReading();
 }
 
 String BaseEzo::takeReading(){
@@ -45,8 +39,4 @@ String BaseEzo::takeReading(){
     return String("ERR");
   }
 
-}
-
-void BaseEzo::disable(){
-  digitalWrite(enablePin, LOW);
 }

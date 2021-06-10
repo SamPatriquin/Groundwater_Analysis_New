@@ -7,29 +7,40 @@
 //Mux selects
 #define S0 5
 #define S1 6
-#define S2 9
+#define S2 9  
 #define S3 10
 
-#define ADDRESS 11
+#define ADDRESS 24
 #define MAX_EZO_RESPONSE_SIZE 40
 
 
 void setup() {
 
-  //Mux enable
-  digitalWrite(1, LOW);
-  digitalWrite(11, LOW);
+  //Mux Pinmodes
+  pinMode(S0, OUTPUT);
+  pinMode(S1, OUTPUT);
+  pinMode(S2, OUTPUT);
+  pinMode(S3, OUTPUT);
+  pinMode(Enable1, OUTPUT);
+  pinMode(Enable2, OUTPUT);
+  pinMode(13, OUTPUT);
 
+  //LED
+  digitalWrite(13, HIGH);
+  
   //Mux select
-  digitalWrite(S0, HIGH);
-  digitalWrite(S1, HIGH);
-  digitalWrite(S2, HIGH);
-  digitalWrite(S3, HIGH);
-
-   
+  digitalWrite(S0, LOW);
+  digitalWrite(S1, LOW);
+  digitalWrite(S2, LOW);
+  digitalWrite(S3, LOW);
+  
+  //Mux Enable
+  digitalWrite(Enable1, LOW);
+  digitalWrite(Enable2, LOW);
 }
 
 void loop() {
+  digitalWrite(Enable1, LOW);
   Wire.beginTransmission(ADDRESS);
   Wire.write("R");
   Wire.endTransmission();

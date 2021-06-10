@@ -1,10 +1,12 @@
 #include <Wire.h>
+#include <Adafruit_SleepyDog.h>
+#include "AddressMapping.h"
 #include "RadioTransmitter.h"
 #include "Pod.h"
 
 // Change these for each node
-const String NODE_ID("1");
-const int NUMBER_OF_PODS = 1;
+const String NODE_ID("1"); //CHANGE THIS FOR EACH NODE UPLOADING TOO
+const int NUMBER_OF_PODS = 4; //DO NOT CHANGE
 
 // Function Declarations
 void initializePods(int numberOfPods);
@@ -14,42 +16,33 @@ Pod pod1(NODE_ID, 1);
 Pod pod2(NODE_ID, 2);
 Pod pod3(NODE_ID, 3);
 Pod pod4(NODE_ID, 4);
-Pod pod5(NODE_ID, 5);
 
 void setup() {
+  setMuxPinModes(); //Comes from AddressMapping.h
   Wire.begin();
   Serial.begin(9600);
-  setupRadio();
+  setupRadio(); //Comes from RadioTransmitter.h
 }
 
 // Node cycle
 void loop() {
+  enableMux(); //Comes from AddressMapping.h
   switch(NUMBER_OF_PODS){
-    case 5:
-      pod5.enable();
-      pod5.cycle();
-      pod5.disable();
-      delay(1000);
     case 4:
-      pod4.enable();
       pod4.cycle();
-      pod4.disable();
       delay(1000);
     case 3:
-      pod3.enable();
       pod3.cycle();
-      pod3.disable();
       delay(1000);
     case 2:
-      pod2.enable();
       pod2.cycle();
-      pod2.disable();
       delay(1000);
     case 1:
-      pod1.enable();
       pod1.cycle();
-      pod1.disable();
+      delay(1000);
       break;
   }
-  delay(500); // Change for how long each node will wait before new cycle
+  disableMux(); //Comes from AddressMapping.h
+  long milis_left = 2000; //CHANGE THIS FOR NODE CYCLE TIMING (900000) is 15 min
+  while(milis_left>0)milis_left-=Watchdog.sleep();
 }

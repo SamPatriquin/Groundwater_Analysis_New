@@ -7,48 +7,28 @@ Pod::Pod(String nodeId, int podId):
   doEzo(podId*10 +4)
   {
     this->nodeId = nodeId;
-    switch(podId){
-      case 1:
-        enablePin = 13;
-        break;
-      case 2:
-        enablePin = 12;
-        break;
-      case 3:
-        enablePin = 11;
-        break;
-      case 4:
-        enablePin = 10;
-        break;
-      case 5:
-        enablePin = 9;
-        break;   
-    }
-    pinMode(enablePin, OUTPUT);
   }
 
-void Pod::enable(){
-  digitalWrite(enablePin, HIGH);
-}
-
 void Pod::cycle(){
-  tempEzo.enable();
-  delay(10);
+  String temperature = tempEzo.selectAndRead();
+  sendRadioMessage(nodeId, String(tempEzo.getAddress()), temperature);
+  delay(100);
   //tempEzo.disable();
 
-  orpEzo.enable();
-  delay(10);
+  String orp = orpEzo.takeReading();
+  sendRadioMessage(nodeId, String(orpEzo.getAddress()), orp);
+  delay(100);
   //orpEzo.disable();
   
-  condEzo.enable();
-  delay(10);
-  //condEzo.disable();
+  condEzo.sendCompensation(temperature);
+  delay(100);
+  String conductivity = condEzo.takeReading();
+  sendRadioMessage(nodeId, String(condEzo.getAddress()), conductivity);
+  delay(100);
   
-  doEzo.enable();
-  delay(10);
-  //doEzo.disable();
-}
-
-void Pod::disable(){
-  digitalWrite(enablePin, LOW);
+  doEzo.sendCompensation(temperature, conductivity);
+  delay(100);
+  String dissolvedOxygen = doEzo.takeReading();
+  sendRadioMessage(nodeId, String(doEzo.getAddress()), dissolvedOxygen);
+  delay(100);
 }

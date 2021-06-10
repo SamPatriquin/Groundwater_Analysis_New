@@ -7,8 +7,7 @@ class BaseEzo{
 public:
   BaseEzo(int address);
   int getAddress(){return address;}
-  void toSleep();
-  void enable();
+  String selectAndRead();
   String takeReading();
   void disable();
 protected:
