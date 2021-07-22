@@ -22,6 +22,7 @@ void setup() {
   Wire.begin();
   Serial.begin(9600);
   setupRadio(); //Comes from RadioTransmitter.h
+  randomSeed(NODE_ID.toInt());
 }
 
 // Node cycle
@@ -43,6 +44,6 @@ void loop() {
       break;
   }
   disableMux(); //Comes from AddressMapping.h
-  long milis_left = 2000; //CHANGE THIS FOR NODE CYCLE TIMING (900000) is 15 min
+  long milis_left = 2000 + random(0, 1000); //CHANGE THIS FOR NODE CYCLE TIMING (900000) is 15 min
   while(milis_left>0)milis_left-=Watchdog.sleep();
 }

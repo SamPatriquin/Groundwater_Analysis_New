@@ -21,7 +21,6 @@ void readingsUntilStabilized(int address);
 void setup() {
   Wire.begin();
   Serial.begin(9600);
-  Serial.setTimeout(3000); // This gives user time to enter break keyword in readingsUntilStabilized function
   while(!Serial); // Wait for user to open Serial monitor
 
   //Mux stuff
@@ -42,22 +41,34 @@ void loop() {
   bool confirmation = false;
 
   // Outer loop- choose address, confirm, select mux pins
-  Serial.println("Please enter I2C address of EZO board with which you wish to communicate:");
+  Serial.println("Please enter I2C address of EZO board with which you wish to communicate, or EZO type (1, 2, 3, 4):");
   address = getInput();
-  Serial.println("You entered address " + address);
+  address.trim();
+  Serial.println("You entered " + address);
   Serial.println("Please confirm that this is correct.");
   confirmation = getConfirmation();
   int add = address.toInt();
-  if(confirmation &&                            // yes confirmation
-    (add / 10 >= 1 && add / 10 <= 4) &&         // first digit on [1, 4]
-    (add % 10 >= 1 && add % 10 <= 4)) {         // second digit on [1, 4]
-      setMuxPins(add);
-      setCalibration(address); // Sending string because Wire transmission needs String, not int
-     }
-  if(!((add / 10 >= 1 && add / 10 <= 4) &&
-       (add % 10 >= 1 && add % 10 <= 4)))
-       Serial.println("Please enter an appropriate address.");
-     
+
+  // This is the case an EZO type was selected
+  // This will go through all four EZOs of the same type
+  if(add >= 1 && add <= 4) {
+    for(int i = 1; i <= 4; i++) {
+      setMuxPins(i * 10 + add);
+      setCalibration(String(i * 10 + add));
+    }
+  }
+  // This is the case an individual address was selected
+  else {
+    if(confirmation &&                            // yes confirmation
+      (add / 10 >= 1 && add / 10 <= 4) &&         // first digit on [1, 4]
+      (add % 10 >= 1 && add % 10 <= 4)) {         // second digit on [1, 4]
+        setMuxPins(add);
+        setCalibration(address); // Sending string because Wire transmission needs String, not int
+      }
+    if(!((add / 10 >= 1 && add / 10 <= 4) &&
+         (add % 10 >= 1 && add % 10 <= 4)))
+        Serial.println("Please enter an appropriate address, or EZO type.");
+  }
   delay(1000); // 1 second delay
 }
 
@@ -152,7 +163,6 @@ void setCalibration(String address) {
   String command = "";
 
   readingsUntilStabilized(add);
-
   Serial.println("Enter command(s) one by one to send to address " + address + ", or \"break\" to go to next EZO:");
   while(true) {
     command = getInput();
@@ -164,7 +174,10 @@ void setCalibration(String address) {
     delay(1400);
     readFromWire(add);
     command.toLowerCase();
-    if(command == "cal,dry" || command == "cal") readingsUntilStabilized(add); // Two step process for conductivity calibration, see EZO documentation sheets for more info
+    if(command == "cal,dry" || command == "cal") {  // Two step process for conductivity and DO calibration, see EZO documentation sheets for more info
+      readingsUntilStabilized(add);
+      Serial.println("Enter command(s) one by one to send to address " + address + ", or \"break\" to go to next EZO:");
+    }
   }
 }
 
