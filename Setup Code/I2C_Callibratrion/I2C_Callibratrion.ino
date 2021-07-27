@@ -51,7 +51,7 @@ void loop() {
 
   // This is the case an EZO type was selected
   // This will go through all four EZOs of the same type
-  if(add >= 1 && add <= 4) {
+  if(confirmation && add >= 1 && add <= 4) {
     for(int i = 1; i <= 4; i++) {
       setMuxPins(i * 10 + add);
       setCalibration(String(i * 10 + add));
@@ -69,7 +69,7 @@ void loop() {
          (add % 10 >= 1 && add % 10 <= 4)))
         Serial.println("Please enter an appropriate address, or EZO type.");
   }
-  delay(1000); // 1 second delay
+  delay(100); // 1 second delay
 }
 
 
@@ -171,7 +171,7 @@ void setCalibration(String address) {
     Wire.beginTransmission(add);
     Wire.write(command.c_str());
     Wire.endTransmission();
-    delay(1400);
+    delay(1000);
     readFromWire(add);
     command.toLowerCase();
     if(command == "cal,dry" || command == "cal") {  // Two step process for conductivity and DO calibration, see EZO documentation sheets for more info
@@ -198,7 +198,7 @@ void readingsUntilStabilized(int address) {
     Wire.beginTransmission(address);
     Wire.write("R");
     Wire.endTransmission();
-    delay(1400);
+    delay(1000);
     readFromWire(address);
     command = Serial.readString(); // Will time out if no input, go to next iteration of loop 
     command.trim();
