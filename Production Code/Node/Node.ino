@@ -4,8 +4,9 @@
 #include "RadioTransmitter.h"
 #include "Pod.h"
 
-// Change these for each node
-const String NODE_ID("1"); //CHANGE THIS FOR EACH NODE UPLOADING TOO
+// Change this for each node
+const String NODE_ID("7"); //CHANGE THIS FOR EACH NODE UPLOADING TOO
+
 const int NUMBER_OF_PODS = 4; //DO NOT CHANGE
 
 // Function Declarations
@@ -44,6 +45,7 @@ void loop() {
       break;
   }
   disableMux(); //Comes from AddressMapping.h
-  long milis_left = 2000 + random(0, 1000); //CHANGE THIS FOR NODE CYCLE TIMING (900000) is 15 min
+//  long milis_left = 900000 + random(0, 120000); //CHANGE THIS FOR NODE CYCLE TIMING (900000) is 15 min
+  long milis_left = 900000; //CHANGE THIS FOR NODE CYCLE TIMING (900000) is 15 min
   while(milis_left>0)milis_left-=Watchdog.sleep();
 }
